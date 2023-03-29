@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head><meta charset="utf-8">
+		<title>Weather Information</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="style.css">
+		<style>
+	  body {
+	font-family: Arial, sans-serif;
+	background-color: #f8f8f8;
+}
+
+.weather-info {
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
+
+@media screen and (max-width: 600px) {
+	.container {
+		max-width: 100%;
+	}
+}
+.card-body:hover {
+    background: #472f4e73;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    border: black solid;
+}
+.my-card:hover {
+    background-size: cover;
+}
+	</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="text-center ">Weather Information</h1>
+			<h6 class="text-center mb-4">{{bus_date}}</h6>
+		{% for city in cityNameTemp %}
+		<div class="container m-3">
+		
+			<div class="weather-info p-4 bg-light rounded my-card" >
+				<h2 class="border-bottom mb-4 pb-3 text-capitalize text-center">City: <span id="city-name">{{city.city_name}}</span></h2>
+				<div class="row">
+					<div class="col-sm-6 mb-3">
+						<div class="card bg-primary text-white text-center" >
+							<div class="card-body">
+								<h5 class="card-title">Min Temperature</h5>
+								<p class="card-text"><span id="min-temp">{{city.apparent_temperature_min}}</span>&deg;C</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 mb-3">
+						<div class="card bg-danger text-white text-center">
+							<div class="card-body">
+								<h5 class="card-title">Max Temperature</h5>
+								<p class="card-text"><span id="max-temp">{{city.apparent_temperature_max}}</span>&deg;C</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 mb-3">
+						<div class="card bg-success text-white text-center">
+							<div class="card-body">
+								<h5 class="card-title">Rain Possibility</h5>
+								<p class="card-text"><span id="rain-percentage">{{city.rain_sum}}</span>%</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 mb-3">
+						<div class="card bg-warning text-white text-center">
+							<div class="card-body">
+								<h5 class="card-title">Max Wind Speed</h5>
+								<p class="card-text"><span id="max-wind-speed">{{city.windspeed_10m_max}}</span> km/h</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+			{% endfor %}
+		</div>
+		<script src="script.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	</body>
+</html>
